@@ -62,20 +62,53 @@ I received my Bachelor degree from HoHai University and majored in Computer Scie
 
 <ul>
 <b>LLM/MLLM Reasoning:</b>
+
 <li>
 AI-generated Images Challenge Visual Trust in High-risk Scenarios.
 <a href="https://arxiv.org/abs/2607.22745">[Paper]</a>
 <a href="https://safeimg.github.io/">[Project]</a>
-<a href="https://huggingface.co/datasets/Snowstorm1492/SafeIMG">[Dataset]</a>
-<a href="https://huggingface.co/datasets/Snowstorm1492/SafeIMG">
-<img src="https://img.shields.io/badge/dynamic/json?url=https%3A%2F%2Fhuggingface.co%2Fapi%2Fdatasets%2FSnowstorm1492%2FSafeIMG&query=%24.downloads&label=Downloads&logo=huggingface&color=yellow">
+<a id="safeimg-dataset"
+   href="https://huggingface.co/datasets/Snowstorm1492/SafeIMG">
+   [Dataset]
 </a>
 <br>
 Yizhi Wang, Yichen Xiao, <b>Linan Yue*</b>, Weibo Gao, Yichao Du, Pengfei Fang, Shimin Di, Min-Ling Zhang
 <br>
- <em>Preprint.</em> 2026. <br>
-    <p style="margin-top:3px"></p>
-  </li>
+<em>Preprint.</em> 2026. <br>
+<p style="margin-top:3px"></p>
+</li>
+
+<script>
+fetch('https://huggingface.co/api/datasets/Snowstorm1492/SafeIMG?expand=downloadsAllTime')
+  .then(response => response.json())
+  .then(data => {
+    const downloads = data.downloadsAllTime;
+
+    if (downloads !== undefined) {
+      let display;
+
+      if (downloads >= 1000000) {
+        display = (downloads / 1000000)
+          .toFixed(1)
+          .replace('.0', '') + 'M+';
+      } else if (downloads >= 1000) {
+        display = (downloads / 1000)
+          .toFixed(1)
+          .replace('.0', '') + 'K+';
+      } else {
+        display = downloads;
+      }
+
+      document.getElementById('safeimg-dataset').textContent =
+        `[Dataset 🔥 ${display}]`;
+    }
+  })
+  .catch(error => {
+    console.error('Failed to fetch SafeIMG downloads:', error);
+  });
+</script>
+
+	
 	
 <li><em>Don't Overthink It</em>: A Survey of Efficient R1-style Large Reasoning Models. <a href="https://arxiv.org/abs/2508.02120">[Paper]</a> 
 	<a href="https://github.com/yuelinan/Awesome-Efficient-R1-style-LRMs">[Project]</a> 
